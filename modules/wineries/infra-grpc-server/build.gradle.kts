@@ -8,12 +8,12 @@ dependencies {
     implementation(project(":modules:wineries:domain"))
     implementation(project(":modules:wineries:stub"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext["coroutinesVersion"]}")
+    implementation(KotlinX.coroutines.core)
 
-    implementation("io.grpc:grpc-protobuf:${rootProject.ext["grpcVersion"]}")
-    implementation("com.google.protobuf:protobuf-java-util:${rootProject.ext["protobufVersion"]}")
-    implementation("com.google.protobuf:protobuf-kotlin:${rootProject.ext["protobufVersion"]}")
-    implementation("io.grpc:grpc-kotlin-stub:${rootProject.ext["grpcKotlinVersion"]}")
+    implementation("io.grpc:grpc-protobuf:_")
+    implementation("com.google.protobuf:protobuf-java-util:_")
+    implementation("com.google.protobuf:protobuf-kotlin:_")
+    implementation("io.grpc:grpc-kotlin-stub:_")
 }
 
 java {

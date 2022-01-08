@@ -5,11 +5,11 @@ plugins {
 dependencies {
     implementation(kotlin("stdlib"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.2")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.2")
-    testImplementation("io.strikt:strikt-core:0.33.0")
+    testImplementation(Testing.junit.jupiter.api)
+    testImplementation(Testing.junit.jupiter.params)
+    testImplementation(Testing.strikt.core)
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
+    testRuntimeOnly(Testing.junit.jupiter.engine)
 }
 
 java {

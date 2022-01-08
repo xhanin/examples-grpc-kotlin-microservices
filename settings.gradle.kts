@@ -1,3 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+    }
+}
+
+plugins {
+    // See https://jmfayard.github.io/refreshVersions
+    id("de.fayard.refreshVersions") version "0.30.1"
+}
+
 rootProject.name = "examples-grpc-kotlin-microservices"
 
 include(
@@ -7,11 +19,4 @@ include(
     "modules:wineries:infra-grpc-server",
     "modules:wineries:application"
 )
-
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-        google()
-    }
-}
 

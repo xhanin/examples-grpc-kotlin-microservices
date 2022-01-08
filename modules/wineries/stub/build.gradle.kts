@@ -3,6 +3,7 @@ import com.google.protobuf.gradle.id
 import com.google.protobuf.gradle.plugins
 import com.google.protobuf.gradle.protobuf
 import com.google.protobuf.gradle.protoc
+import de.fayard.refreshVersions.core.versionFor
 
 plugins {
     kotlin("jvm")
@@ -13,12 +14,12 @@ dependencies {
     protobuf(project(":modules:wineries:proto"))
 
     implementation(kotlin("stdlib"))
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext["coroutinesVersion"]}")
+    implementation(KotlinX.coroutines.core)
 
-    implementation("io.grpc:grpc-protobuf:${rootProject.ext["grpcVersion"]}")
-    implementation("com.google.protobuf:protobuf-java-util:${rootProject.ext["protobufVersion"]}")
-    implementation("com.google.protobuf:protobuf-kotlin:${rootProject.ext["protobufVersion"]}")
-    implementation("io.grpc:grpc-kotlin-stub:${rootProject.ext["grpcKotlinVersion"]}")
+    implementation("io.grpc:grpc-protobuf:_")
+    implementation("com.google.protobuf:protobuf-java-util:_")
+    implementation("com.google.protobuf:protobuf-kotlin:_")
+    implementation("io.grpc:grpc-kotlin-stub:_")
 }
 
 java {
@@ -40,14 +41,14 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:${rootProject.ext["protobufVersion"]}"
+        artifact = "com.google.protobuf:protoc:${versionFor("version.com.google.protobuf..protoc")}"
     }
     plugins {
         id("grpc") {
-            artifact = "io.grpc:protoc-gen-grpc-java:${rootProject.ext["grpcVersion"]}"
+            artifact = "io.grpc:protoc-gen-grpc-java:${versionFor("version.io.grpc..protoc-gen-grpc-java")}"
         }
         id("grpckt") {
-            artifact = "io.grpc:protoc-gen-grpc-kotlin:${rootProject.ext["grpcKotlinVersion"]}:jdk7@jar"
+            artifact = "io.grpc:protoc-gen-grpc-kotlin:${versionFor("version.io.grpc..protoc-gen-grpc-kotlin")}:jdk7@jar"
         }
     }
     generateProtoTasks {

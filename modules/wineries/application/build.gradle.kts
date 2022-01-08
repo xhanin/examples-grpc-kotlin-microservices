@@ -10,16 +10,16 @@ dependencies {
     implementation(project(":modules:wineries:stub"))
     implementation(project(":modules:wineries:infra-grpc-server"))
 
-    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${rootProject.ext["coroutinesVersion"]}")
+    implementation(KotlinX.coroutines.core)
 
-    implementation("io.grpc:grpc-protobuf:${rootProject.ext["grpcVersion"]}")
-    implementation("io.grpc:grpc-services:${rootProject.ext["grpcVersion"]}") {
+    implementation("io.grpc:grpc-protobuf:_")
+    implementation("io.grpc:grpc-services:_") {
         because("grpc server reflection")
     }
-    implementation("com.google.protobuf:protobuf-java-util:${rootProject.ext["protobufVersion"]}")
-    implementation("com.google.protobuf:protobuf-kotlin:${rootProject.ext["protobufVersion"]}")
-    implementation("io.grpc:grpc-kotlin-stub:${rootProject.ext["grpcKotlinVersion"]}")
-    runtimeOnly("io.grpc:grpc-netty:${rootProject.ext["grpcVersion"]}")
+    implementation("com.google.protobuf:protobuf-java-util:_")
+    implementation("com.google.protobuf:protobuf-kotlin:_")
+    implementation("io.grpc:grpc-kotlin-stub:_")
+    runtimeOnly("io.grpc:grpc-netty:_")
 }
 
 java {
