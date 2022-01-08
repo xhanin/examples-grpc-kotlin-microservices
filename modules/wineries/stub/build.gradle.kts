@@ -10,10 +10,11 @@ plugins {
     id("com.google.protobuf")
 }
 
+baseProject()
+
 dependencies {
     protobuf(project(":modules:wineries:proto"))
 
-    implementation(kotlin("stdlib"))
     implementation(KotlinX.coroutines.core)
 
     implementation("io.grpc:grpc-protobuf:_")

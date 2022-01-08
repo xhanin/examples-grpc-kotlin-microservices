@@ -2,9 +2,9 @@ plugins {
     kotlin("jvm")
 }
 
-dependencies {
-    implementation(kotlin("stdlib"))
+baseProject()
 
+dependencies {
     implementation(project(":modules:wineries:domain"))
     implementation(project(":modules:wineries:stub"))
 
