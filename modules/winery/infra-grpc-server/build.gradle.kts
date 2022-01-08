@@ -5,8 +5,8 @@ plugins {
 baseProject()
 
 dependencies {
-    implementation(project(":modules:wineries:domain"))
-    implementation(project(":modules:wineries:stub"))
+    implementation(project(":modules:winery:domain"))
+    implementation(project(":modules:winery:stub"))
 
     implementation(KotlinX.coroutines.core)
 

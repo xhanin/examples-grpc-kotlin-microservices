@@ -6,9 +6,9 @@ plugins {
 baseProject()
 
 dependencies {
-    implementation(project(":modules:wineries:domain"))
-    implementation(project(":modules:wineries:stub"))
-    implementation(project(":modules:wineries:infra-grpc-server"))
+    implementation(project(":modules:winery:domain"))
+    implementation(project(":modules:winery:stub"))
+    implementation(project(":modules:winery:infra-grpc-server"))
 
     implementation(KotlinX.coroutines.core)
 

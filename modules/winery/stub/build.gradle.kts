@@ -13,7 +13,7 @@ plugins {
 baseProject()
 
 dependencies {
-    protobuf(project(":modules:wineries:proto"))
+    protobuf(project(":modules:winery:proto"))
 
     implementation(KotlinX.coroutines.core)
 

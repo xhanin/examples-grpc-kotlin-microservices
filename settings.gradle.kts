@@ -17,10 +17,10 @@ refreshVersions {
 rootProject.name = "examples-grpc-kotlin-microservices"
 
 include(
-    "modules:wineries:proto",
-    "modules:wineries:stub",
-    "modules:wineries:domain",
-    "modules:wineries:infra-grpc-server",
-    "modules:wineries:application"
+    "modules:winery:proto",
+    "modules:winery:stub",
+    "modules:winery:domain",
+    "modules:winery:infra-grpc-server",
+    "modules:winery:application"
 )
 
