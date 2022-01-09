@@ -3,7 +3,6 @@ package example.wineries.app
 import example.winecellar.domain.WinecellarService
 import example.winecellar.grpcServer.WinecellarServiceGrpc
 import example.winecellar.spi.svc.WineryServiceGrpcImpl
-import example.winery.WineryServiceGrpcKt
 import io.grpc.ManagedChannelBuilder
 import io.grpc.Server
 import io.grpc.ServerBuilder
@@ -13,9 +12,11 @@ class WinecellarApplication(val port:Int) {
     private var server: Server
 
     init {
-        val channel = ManagedChannelBuilder.forTarget("localhost:8888").usePlaintext().build()
-        val stub = WineryServiceGrpcKt.WineryServiceCoroutineStub(channel)
-        val wineryService = WineryServiceGrpcImpl(stub)
+        val wineryService = WineryServiceGrpcImpl(
+            ManagedChannelBuilder
+                .forTarget("localhost:8888").usePlaintext()
+                .build()
+        )
 
         val winecellarService = WinecellarService(wineryService)
         server = ServerBuilder.forPort(port)
