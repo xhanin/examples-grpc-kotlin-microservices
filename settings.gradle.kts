@@ -16,11 +16,10 @@ refreshVersions {
 
 rootProject.name = "examples-grpc-kotlin-microservices"
 
-include(
-    "modules:winery:proto",
-    "modules:winery:stub",
-    "modules:winery:domain",
-    "modules:winery:infra-grpc-server",
-    "modules:winery:application"
-)
+listOf("proto", "stub", "domain", "infra-grpc-server", "application").forEach {
+    include("modules:winery:$it")
+}
+listOf("proto", "stub", "domain", "infra-svc-grpc-client", "infra-grpc-server", "application").forEach {
+    include("modules:winecellar:$it")
+}
 

@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "example.winecellar";
+option java_outer_classname = "WinecellarProto";
+
+package winecellar;
+
+service WinecellarService {
+  rpc ListAll (ListAllWinecellarRequest) returns (stream Winecellar);
+  rpc LoadStock (LoadWinecellarStockRequest) returns (WinecellarStock);
+}
+
+message ListAllWinecellarRequest {
+}
+
+message LoadWinecellarStockRequest {
+  string wineCellarId = 1;
+}
+
+message Winecellar {
+  string id = 1;
+  string owner = 2;
+  string name = 3;
+}
+
+message WinecellarStock {
+  string wineCellarId = 1;
+  repeated WinecellarStockItem items = 2;
+}
+
+message WinecellarStockItem {
+    WineryRef wineryRef = 1;
+    int32 quantity = 2;
+}
+
+message WineryRef {
+  string id = 1;
+  string name = 2;
+}
