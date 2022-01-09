@@ -1,0 +1,7 @@
+namespace: grpc-demo
+resources:
+  - ../../base
+configMapGenerator:
+  - envs:
+      - application.properties
+    name: env-props

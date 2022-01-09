@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    # configure traefik for http2 / grpc
+    ingress.kubernetes.io/protocol: h2c
+  labels:
+    app: sample-grpc
+  name: sample-grpc
+spec:
+  rules:
+    - host: sample-grpc.k3d.localhost
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: app-winecellar
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - sample-grpc.k3d.localhost
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-winecellar-nodeport
+spec:
+  ports:
+    - port: 80
+      nodePort: 30080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: app-winecellar-server
+  type: NodePort

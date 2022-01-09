@@ -1,0 +1,48 @@
+---
+apiVersion: "apps/v1"
+kind: Deployment
+metadata:
+  name: "app-winecellar-server"
+  labels:
+    app: "app-winecellar-server"
+    kind: "app"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "app-winecellar-server"
+  template:
+    metadata:
+      labels:
+        app: "app-winecellar-server"
+        kind: "app"
+    spec:
+      containers:
+        - name: "main"
+          env:
+            - name: SERVER__PORT
+              value: "8080"
+            - name: WINERY__TARGET
+              value: app-winery:80
+          envFrom:
+            - configMapRef:
+                name: env-props
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "10m"
+          image: "winecellar-server:latest"
+          imagePullPolicy: IfNotPresent
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-winecellar
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    app: app-winecellar-server
+  type: ClusterIP

@@ -1,0 +1,4 @@
+resources:
+  - resources/ingress.yaml
+  - resources/winecellar-srv.yaml
+  - resources/winery-srv.yaml
