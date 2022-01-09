@@ -13,7 +13,7 @@ class WinecellarApplication(val port:Int) {
     private var server: Server
 
     init {
-        val channel = ManagedChannelBuilder.forAddress("localhost", 8888).usePlaintext().build()
+        val channel = ManagedChannelBuilder.forTarget("localhost:8888").usePlaintext().build()
         val stub = WineryServiceGrpcKt.WineryServiceCoroutineStub(channel)
         val wineryService = WineryServiceGrpcImpl(stub)
 
