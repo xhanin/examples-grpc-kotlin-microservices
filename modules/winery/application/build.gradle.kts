@@ -10,6 +10,9 @@ dependencies {
     implementation(project(":modules:winery:stub"))
     implementation(project(":modules:winery:infra-grpc-server"))
 
+    implementation("com.sksamuel.hoplite:hoplite-core:_")
+    implementation("com.sksamuel.hoplite:hoplite-yaml:_")
+
     implementation(KotlinX.coroutines.core)
 
     implementation("io.grpc:grpc-protobuf:_")
