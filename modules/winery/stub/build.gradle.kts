@@ -40,6 +40,10 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
     }
 }
 
+tasks.withType<Jar>().configureEach {
+    archiveBaseName.set("winery-stub")
+}
+
 protobuf {
     protoc {
         artifact = "com.google.protobuf:protoc:${versionFor("version.com.google.protobuf..protoc")}"
