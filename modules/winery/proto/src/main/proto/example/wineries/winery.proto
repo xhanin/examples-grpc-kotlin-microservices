@@ -21,11 +21,22 @@ package winery;
 
 service WineryService {
   rpc ListAll (ListAllWineriesRequest) returns (stream Winery);
+  rpc GetById (GetWineryByIdRequest) returns (GetWineryByIdResponse);
 }
 
 message ListAllWineriesRequest {
 }
 
+message GetWineryByIdRequest {
+  string id = 1;
+}
+
+message GetWineryByIdResponse {
+  optional Winery winery = 1;
+}
+
 message Winery {
-  string name = 1;
+  string id = 1;
+  string name = 2;
+  string appelation = 3;
 }
