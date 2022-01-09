@@ -1,4 +1,4 @@
-package example.wineries.app
+package example.winecellar.app
 
 import com.sksamuel.hoplite.ConfigLoader
 import com.sksamuel.hoplite.PropertySource
