@@ -1,4 +1,9 @@
 resources:
   - resources/ingress.yaml
+  - resources/envoy-grpcweb-proxy.yaml
   - resources/winecellar-srv.yaml
   - resources/winery-srv.yaml
+configMapGenerator:
+  - name: envoy-config
+    files:
+      - config/envoy.yaml
