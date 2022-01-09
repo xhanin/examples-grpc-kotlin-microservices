@@ -2,13 +2,14 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   annotations:
-    # configure traefik for http2 / grpc
+    # configure traefik for http2 / grpc - not working :(
     ingress.kubernetes.io/protocol: h2c
   labels:
     app: sample-grpc
   name: sample-grpc
 spec:
   rules:
+    # this currently doesn't work as is in a k3d cluster - therefore the service is exposed via node port, or telepresence
     - host: sample-grpc.k3d.localhost
       http:
         paths:
@@ -23,6 +24,7 @@ spec:
     - hosts:
         - sample-grpc.k3d.localhost
 ---
+# exposes the service directly on node port, to bypass the ingress, which doesn't properly support http2
 apiVersion: v1
 kind: Service
 metadata:
