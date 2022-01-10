@@ -16,24 +16,18 @@ class Stock extends React.Component {
     componentDidMount() {
         const enableDevTools = window.__GRPCWEB_DEVTOOLS__ || (() => {});
         var winecellarService = new WinecellarServiceClient("http://sample-grpc.k3d.localhost:8098");
-        enableDevTools([
-            winecellarService,
-        ]);
+        enableDevTools([winecellarService]);
 
-        var request = new LoadWinecellarStockRequest().setWinecellarid("111");
-        console.log("sending request to server");
-        winecellarService.loadStock(request, {}, (err, response) => {
+        winecellarService.loadStock(new LoadWinecellarStockRequest().setWinecellarid("111"), {}, (err, response) => {
             if (err) {
                 console.log("error", err);
                 return;
             }
-            console.log("response", response);
-            var items = response.getItemsList().map( (item) => {
-                return {quantity: item.getQuantity(), wineryName: item.getWineryref().getName()};
-            });
-            console.log(items)
-            this.setState({items: items.map( (item) =>
-                    <StockItem key={item.wineryName} wineryName={item.wineryName} quantity={item.quantity} />
+            this.setState({items: response.getItemsList().map( (item) =>
+                    <StockItem
+                        key={item.getWineryref().getName()}
+                        wineryName={item.getWineryref().getName()}
+                        quantity={item.getQuantity()} />
                 )});
         });
     }
