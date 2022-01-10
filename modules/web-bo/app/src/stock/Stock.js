@@ -14,7 +14,11 @@ class Stock extends React.Component {
     }
 
     componentDidMount() {
+        const enableDevTools = window.__GRPCWEB_DEVTOOLS__ || (() => {});
         var winecellarService = new WinecellarServiceClient("http://sample-grpc.k3d.localhost:8098");
+        enableDevTools([
+            winecellarService,
+        ]);
 
         var request = new LoadWinecellarStockRequest().setWinecellarid("111");
         console.log("sending request to server");
