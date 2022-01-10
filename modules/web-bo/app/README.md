@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### generate proto js and grpc
+
+```shell
+# make sure you have buf and gen-protoc-grpc-web in PATH, then
+buf generate ../../winecellar/proto/src/main/proto
+```
