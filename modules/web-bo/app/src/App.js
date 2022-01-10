@@ -1,4 +1,5 @@
 import './App.css';
+import Stock from './stock/Stock';
 
 function App() {
   return (
@@ -96,27 +97,7 @@ function App() {
             <div className="tile is-parent">
                 <article className="tile is-child notification is-success">
                     <div className="content">
-                        <p className="title">Cellar Stock</p>
-                        <p className="subtitle">My lovely bottles</p>
-                        <div className="content">
-                            <div className="card">
-                                <header className="card-header">
-                                    <p className="card-header-title">
-                                        Chateau Margaux
-                                    </p>
-                                </header>
-                                <div className="card-content">
-                                    <div className="content">
-                                        <span>12</span> bottles of <span>Chateau Margaux</span>
-                                    </div>
-                                </div>
-                                <footer className="card-footer">
-                                    <a href="#" className="card-footer-item">Save</a>
-                                    <a href="#" className="card-footer-item">Edit</a>
-                                    <a href="#" className="card-footer-item">Delete</a>
-                                </footer>
-                            </div>
-                        </div>
+                        <Stock />
                     </div>
                 </article>
             </div>
