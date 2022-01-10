@@ -11,10 +11,9 @@ class Stock extends React.Component {
         this.state = {
             items: []
         };
-        this.load();
     }
 
-    load() {
+    componentDidMount() {
         var winecellarService = new WinecellarServiceClient("http://sample-grpc.k3d.localhost:8098");
 
         var request = new LoadWinecellarStockRequest().setWinecellarid("111");
@@ -30,7 +29,7 @@ class Stock extends React.Component {
             });
             console.log(items)
             this.setState({items: items.map( (item) =>
-                    <StockItem wineryName={item.wineryName} quantity={item.quantity} />
+                    <StockItem key={item.wineryName} wineryName={item.wineryName} quantity={item.quantity} />
                 )});
         });
     }
