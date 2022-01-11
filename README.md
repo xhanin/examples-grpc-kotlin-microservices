@@ -2,6 +2,10 @@
 
 ## testing with cli
 
+first run the grpc servers locally (by running the `<Module>ApplicationKt` of a module, eg `WinecellarApplicattionKt`)
+
+then you can use grpcurl and ghz to test the grpc services:
+
 Call load stock for a cellar
 ```shell
 grpcurl -plaintext -d '{"wineCellarId":"111"}' localhost:8889 winecellar.WinecellarService/LoadStock
@@ -23,6 +27,30 @@ to rebuild / redeploy (warn: importing images is very slow)
 ```shell
 sh scripts/all-with-existing-cluster.sh
 ```
+
+moreover, you will need to add these names to your `hosts` file:
+```text
+127.0.0.1 sample-grpcweb.k3d.localhost sample-grpcjson.k3d.localhost
+```
+
+### json api
+
+then you can access the json api with curl:
+```shell
+curl -H "Content-Type: application/json" \
+   http://sample-grpcjson.k3d.localhost:8098/winecellars
+```
+
+```shell
+curl -H "Content-Type: application/json" \
+   http://sample-grpcjson.k3d.localhost:8098/winecellars/111/stock
+```
+
+### react app using grpc-web
+
+you can run the app located in `modules/web-bo/app` and running `npm start`
+
+the app is performing a grpc-web call proxied through envoy running in k8s cluster
 
 ## telepresence
 

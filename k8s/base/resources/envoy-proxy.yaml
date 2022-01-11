@@ -1,32 +1,39 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-envoy-grpcweb-proxy
+  name: app-envoy-proxy
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: envoy-grpcweb-proxy
+      app: envoy-proxy
   template:
     metadata:
       labels:
-        app: envoy-grpcweb-proxy
+        app: envoy-proxy
     spec:
       volumes:
         - name: config-volume
           configMap:
             name: envoy-config
+        - name: proto-volume
+          configMap:
+            name: proto-images
       containers:
         - name: main
           image: envoyproxy/envoy-alpine:v1.20-latest
           ports:
-            - name: envoy
+            - name: envoy-grpcweb
               containerPort: 8080
+            - name: envoy-grpcjson
+              containerPort: 7778
             - name: envoy-admin
               containerPort: 9001
           volumeMounts:
             - name: config-volume
               mountPath: /config
+            - name: proto-volume
+              mountPath: /proto
           command:
             - /usr/local/bin/envoy
             - -c
@@ -43,5 +50,19 @@ spec:
       port: 80
       targetPort: 8080
   selector:
-    app: envoy-grpcweb-proxy
+    app: envoy-proxy
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: envoy-grpcjson-proxy
+spec:
+  ports:
+    - name: envoy
+      protocol: TCP
+      port: 80
+      targetPort: 7778
+  selector:
+    app: envoy-proxy
   type: ClusterIP

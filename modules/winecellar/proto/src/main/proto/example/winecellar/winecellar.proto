@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+import "google/api/annotations.proto";
+
 option java_multiple_files = true;
 option java_package = "example.winecellar";
 option java_outer_classname = "WinecellarProto";
@@ -7,8 +9,16 @@ option java_outer_classname = "WinecellarProto";
 package winecellar;
 
 service WinecellarService {
-  rpc ListAll (ListAllWinecellarRequest) returns (stream Winecellar);
-  rpc LoadStock (LoadWinecellarStockRequest) returns (WinecellarStock);
+  rpc ListAll (ListAllWinecellarRequest) returns (stream Winecellar) {
+    option (google.api.http) = {
+      get: "/winecellars"
+    };
+  }
+  rpc LoadStock (LoadWinecellarStockRequest) returns (WinecellarStock) {
+    option (google.api.http) = {
+      get: "/winecellars/{wineCellarId}/stock"
+    };
+  }
 }
 
 message ListAllWinecellarRequest {
