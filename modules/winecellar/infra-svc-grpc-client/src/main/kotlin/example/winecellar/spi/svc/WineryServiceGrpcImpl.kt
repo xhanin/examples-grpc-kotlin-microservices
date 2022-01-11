@@ -13,13 +13,13 @@ class WineryServiceGrpcImpl(channel: Channel) :WineryService {
         client = WineryServiceGrpcKt.WineryServiceCoroutineStub(channel)
     }
 
-    override suspend fun getRefById(id: String): WineryRef? {
-        return client.getById(getWineryByIdRequest { this.id = id }).let {
-            if (it.hasWinery()) {
-                WineryRef(it.winery.id, it.winery.name)
-            } else {
-                null
+    override suspend fun getRefById(id: String): WineryRef? =
+        try {
+            client.getById(getWineryByIdRequest { this.id = id }).let {
+                WineryRef(it.id, it.name)
             }
+        } catch (e:Exception) {
+            println("error occured: $e")
+            null
         }
-    }
 }

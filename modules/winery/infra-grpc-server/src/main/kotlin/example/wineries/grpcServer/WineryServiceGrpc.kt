@@ -2,6 +2,8 @@ package example.wineries.grpcServer
 
 import example.wineries.domain.WineryService
 import example.winery.*
+import io.grpc.Status
+import io.grpc.StatusException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.asFlow
 
@@ -10,14 +12,9 @@ class WineryServiceGrpc(private val svc: WineryService) : WineryServiceGrpcKt.Wi
         return svc.listAll().map { it.toProto() }.asFlow()
     }
 
-    override suspend fun getById(request: GetWineryByIdRequest): GetWineryByIdResponse =
+    override suspend fun getById(request: GetWineryByIdRequest): Winery =
         svc.getById(request.id)?.toProto()
-            ?.let {
-                getWineryByIdResponse {
-                    winery = it
-                }
-            }
-            ?: getWineryByIdResponse {}
+            ?: throw StatusException(Status.NOT_FOUND)
 }
 
 private fun example.wineries.domain.Winery.toProto(): Winery {
