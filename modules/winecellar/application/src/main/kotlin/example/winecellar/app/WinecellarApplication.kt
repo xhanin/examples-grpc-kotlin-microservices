@@ -8,6 +8,8 @@ import example.winecellar.spi.svc.WineryServiceGrpcImpl
 import io.grpc.ManagedChannelBuilder
 import io.grpc.Server
 import io.grpc.ServerBuilder
+import io.grpc.ServerInterceptors
+import io.grpc.ServerInterceptors.intercept
 import io.grpc.protobuf.services.ProtoReflectionService
 import kotlin.io.path.Path
 
@@ -20,7 +22,7 @@ class WinecellarApplication(config:Config) {
 
         val winecellarService = WinecellarService(wineryService)
         server = ServerBuilder.forPort(port)
-            .addService(WinecellarServiceGrpc(winecellarService))
+            .addService(intercept(WinecellarServiceGrpc(winecellarService), JwtServerInterceptor()))
             .addService(ProtoReflectionService.newInstance())
             .build()
     }
