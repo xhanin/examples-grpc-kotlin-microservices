@@ -1,5 +1,8 @@
 import './App.css';
 import Stock from './stock/Stock';
+import LoginButton from "./auth/LoginButton";
+import LogoutButton from "./auth/LogoutButton";
+import Profile from "./auth/Profile";
 
 function App() {
   return (
@@ -54,9 +57,8 @@ function App() {
                             <a className="button is-primary">
                                 <strong>Sign up</strong>
                             </a>
-                            <a className="button is-light">
-                                Log in
-                            </a>
+                            <LogoutButton />
+                            <LoginButton />
                         </div>
                     </div>
                 </div>
@@ -67,8 +69,8 @@ function App() {
                 <div className="tile">
                     <div className="tile is-parent is-vertical">
                         <article className="tile is-child notification is-primary">
-                            <p className="title">Vertical...</p>
-                            <p className="subtitle">Top tile</p>
+                            <p className="title">Profile</p>
+                            <Profile />
                         </article>
                         <article className="tile is-child notification is-warning">
                             <p className="title">...tiles</p>
