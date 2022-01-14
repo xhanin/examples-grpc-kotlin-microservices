@@ -1,5 +1,8 @@
 import * as jspb from 'google-protobuf'
 
+import * as google_api_annotations_pb from '../../google/api/annotations_pb';
+
+
 export class ListAllWinecellarRequest extends jspb.Message {
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): ListAllWinecellarRequest.AsObject;
