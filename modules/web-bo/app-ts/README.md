@@ -51,6 +51,4 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ```shell
 # make sure you have buf and gen-protoc-grpc-web in PATH, then
 buf generate ../../winecellar/proto
-
-# then you need to either generate google annotation or remove reference in generated code - ugly, but need to find a better way
 ```
