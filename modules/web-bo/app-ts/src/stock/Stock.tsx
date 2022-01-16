@@ -22,19 +22,14 @@ function Stock() {
 
         var request = new LoadWinecellarStockRequest().setWinecellarid("111");
         console.log("sending request to server");
-        winecellarService.loadStock(request, {"Authorization": "Bearer " + token}, (err, response) => {
-            if (err) {
-                console.log("error", err);
-                return;
-            }
-            let elements = response.getItemsList().map( (item) =>
-                <StockItem
-                    key={item.getWineryref()?.getName()}
-                    wineryName={item.getWineryref()?.getName()??""}
-                    quantity={item.getQuantity()} />
-            );
-            setItems(elements);
-        });
+        const stock = await winecellarService.loadStock(request, {"Authorization": "Bearer " + token});
+        let elements = stock.getItemsList().map( (item) =>
+            <StockItem
+                key={item.getWineryref()?.getName()}
+                wineryName={item.getWineryref()?.getName()??""}
+                quantity={item.getQuantity()} />
+        );
+        setItems(elements);
     }
 
     return (
