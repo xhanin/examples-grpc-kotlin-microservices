@@ -10,12 +10,19 @@ option go_package = "github.com/xhanin/examples/v1"; // required for openapi gen
 
 package winecellar;
 
+/*
+This service allow to query winecellars handled in the application.
+ */
 service WinecellarService {
+  // list all winecellars avaiable
   rpc ListAll (ListAllWinecellarRequest) returns (stream Winecellar) {
     option (google.api.http) = {
       get: "/winecellars"
     };
   }
+  // loads the stock of a winecellar.
+  // you must be sure the winecellar exists before calling this service,
+  // calling this service for an unknown winecellar id is considered as an `ERROR`.
   rpc LoadStock (LoadWinecellarStockRequest) returns (WinecellarStock) {
     option (google.api.http) = {
       get: "/winecellars/{wine_cellar_id}/stock"
@@ -23,30 +30,37 @@ service WinecellarService {
   }
 }
 
+// the request to list all winecellars take no parameter
 message ListAllWinecellarRequest {
 }
 
+// the request to load the stock of a winecellar takes the id as parameter
 message LoadWinecellarStockRequest {
-  string wine_cellar_id = 1;
+  string wine_cellar_id = 1; // the id of the wine cellar to the load the stock of.
 }
 
+// represents a winecellar
+// gives only minimal information about the winecellar such as the owner and the name
 message Winecellar {
-  string id = 1;
-  string owner = 2;
-  string name = 3;
+  string id = 1; // the id of the winecellar
+  string owner = 2; // the name of the owner of the winecellar
+  string name = 3; // the name of the winecellar
 }
 
+// rerpresents the full stock of a wiecellar
 message WinecellarStock {
-  string wine_cellar_id = 1;
-  repeated WinecellarStockItem items = 2;
+  string wine_cellar_id = 1; // the id of the winecellar this stock rerfers to
+  repeated WinecellarStockItem items = 2; // a list of stock items, detailing the stock
 }
 
+// represents an item in a winecellar stock
 message WinecellarStockItem {
-    WineryRef winery_ref = 1;
-    int32 quantity = 2;
+    WineryRef winery_ref = 1; // the reference to the winery of the bottles of this stock item
+    int32 quantity = 2; // the quantity of bottles in stock for this winery
 }
 
+// represents a reference to a winery
 message WineryRef {
-  string id = 1;
-  string name = 2;
+  string id = 1; // the id of the winery referenced by this ref
+  string name = 2; // the name of the winery
 }

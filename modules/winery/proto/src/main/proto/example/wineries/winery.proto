@@ -19,20 +19,42 @@ option java_outer_classname = "WineryProto";
 
 package winery;
 
+/*
+This service allows to deal with wineries available in the application.
+
+A *winery* is is a building or property that produces wine, or a business
+involved in the production of [wine](https://en.wikipedia.org/wiki/Wine),
+such as a wine company.
+
+This service currently proposes to list all available wineries in the
+application, and to get one winery by id.
+ */
 service WineryService {
+  // list all wineries available in the app - the list is returned as a stream
   rpc ListAll (ListAllWineriesRequest) returns (stream Winery);
+  // fetches one winery by id
   rpc GetById (GetWineryByIdRequest) returns (Winery);
 }
 
+// the list all wineries request currently takes no parameter
 message ListAllWineriesRequest {
 }
 
+// to get a winery by id, you must provide its id
 message GetWineryByIdRequest {
-  string id = 1;
+  string id = 1; // the id of the winery
 }
 
+/*
+Represents a Winery.
+
+A winery has an id, a name and an appelation.
+
+In the future, this may evolve, some wineries produce several appelations, and
+an appelation deserves its own service and objects.
+ */
 message Winery {
-  string id = 1;
-  string name = 2;
-  string appelation = 3;
+  string id = 1; // the id of the winery
+  string name = 2; // the officiel name of the winery
+  string appelation = 3; // the main appelation of the wines produced in this winery
 }
