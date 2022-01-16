@@ -1,28 +1,38 @@
 import React, {useState} from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
+import {useAuth0} from "@auth0/auth0-react";
+import AuthInterceptor from "../auth/AuthInterceptor";
 
 import {LoadWinecellarStockRequest} from "../proto/example/winecellar/winecellar_pb"
 import {WinecellarServiceClient} from "../proto/example/winecellar/WinecellarServiceClientPb"
 
 import StockItem from "./stockitem/StockItem";
 
+
 function Stock() {
     const [items, setItems] = useState([] as JSX.Element[]);
-
     const {getAccessTokenSilently} = useAuth0();
 
-    const loadStock = async () => {
+    function getWinecellarService() {
+        const authInterceptor = new AuthInterceptor(getAccessTokenSilently)
+        const options = {
+            unaryInterceptors: [authInterceptor],
+            streamInterceptors: [authInterceptor]
+        }
+
         // @ts-ignore
         const enableDevTools = window.__GRPCWEB_DEVTOOLS__ || (() => {});
-        var winecellarService = new WinecellarServiceClient("http://sample-grpcweb.k3d.localhost:8098");
+        var winecellarService = new WinecellarServiceClient(
+            "http://sample-grpcweb.k3d.localhost:8098", null, options);
         enableDevTools([winecellarService]);
+        return winecellarService;
+    }
 
-        const token = await getAccessTokenSilently();
-        console.log(token)
+    const loadStock = async () => {
+        var winecellarService = getWinecellarService();
 
         var request = new LoadWinecellarStockRequest().setWinecellarid("111");
         console.log("sending request to server");
-        const stock = await winecellarService.loadStock(request, {"Authorization": "Bearer " + token});
+        const stock = await winecellarService.loadStock(request, null);
         let elements = stock.getItemsList().map( (item) =>
             <StockItem
                 key={item.getWineryref()?.getName()}
