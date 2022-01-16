@@ -30,13 +30,13 @@ function Stock() {
     const loadStock = async () => {
         var winecellarService = getWinecellarService();
 
-        var request = new LoadWinecellarStockRequest().setWinecellarid("111");
+        var request = new LoadWinecellarStockRequest().setWineCellarId("111");
         console.log("sending request to server");
         const stock = await winecellarService.loadStock(request, null);
         let elements = stock.getItemsList().map( (item) =>
             <StockItem
-                key={item.getWineryref()?.getName()}
-                wineryName={item.getWineryref()?.getName()??""}
+                key={item.getWineryRef()?.getName()}
+                wineryName={item.getWineryRef()?.getName()??""}
                 quantity={item.getQuantity()} />
         );
         setItems(elements);

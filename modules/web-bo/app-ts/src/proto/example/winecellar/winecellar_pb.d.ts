@@ -18,8 +18,8 @@ export namespace ListAllWinecellarRequest {
 }
 
 export class LoadWinecellarStockRequest extends jspb.Message {
-  getWinecellarid(): string;
-  setWinecellarid(value: string): LoadWinecellarStockRequest;
+  getWineCellarId(): string;
+  setWineCellarId(value: string): LoadWinecellarStockRequest;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): LoadWinecellarStockRequest.AsObject;
@@ -31,7 +31,7 @@ export class LoadWinecellarStockRequest extends jspb.Message {
 
 export namespace LoadWinecellarStockRequest {
   export type AsObject = {
-    winecellarid: string,
+    wineCellarId: string,
   }
 }
 
@@ -62,8 +62,8 @@ export namespace Winecellar {
 }
 
 export class WinecellarStock extends jspb.Message {
-  getWinecellarid(): string;
-  setWinecellarid(value: string): WinecellarStock;
+  getWineCellarId(): string;
+  setWineCellarId(value: string): WinecellarStock;
 
   getItemsList(): Array<WinecellarStockItem>;
   setItemsList(value: Array<WinecellarStockItem>): WinecellarStock;
@@ -80,16 +80,16 @@ export class WinecellarStock extends jspb.Message {
 
 export namespace WinecellarStock {
   export type AsObject = {
-    winecellarid: string,
+    wineCellarId: string,
     itemsList: Array<WinecellarStockItem.AsObject>,
   }
 }
 
 export class WinecellarStockItem extends jspb.Message {
-  getWineryref(): WineryRef | undefined;
-  setWineryref(value?: WineryRef): WinecellarStockItem;
-  hasWineryref(): boolean;
-  clearWineryref(): WinecellarStockItem;
+  getWineryRef(): WineryRef | undefined;
+  setWineryRef(value?: WineryRef): WinecellarStockItem;
+  hasWineryRef(): boolean;
+  clearWineryRef(): WinecellarStockItem;
 
   getQuantity(): number;
   setQuantity(value: number): WinecellarStockItem;
@@ -104,7 +104,7 @@ export class WinecellarStockItem extends jspb.Message {
 
 export namespace WinecellarStockItem {
   export type AsObject = {
-    wineryref?: WineryRef.AsObject,
+    wineryRef?: WineryRef.AsObject,
     quantity: number,
   }
 }

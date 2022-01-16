@@ -288,7 +288,7 @@ proto.winecellar.LoadWinecellarStockRequest.prototype.toObject = function(opt_in
  */
 proto.winecellar.LoadWinecellarStockRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
-    winecellarid: jspb.Message.getFieldWithDefault(msg, 1, "")
+    wineCellarId: jspb.Message.getFieldWithDefault(msg, 1, "")
   };
 
   if (includeInstance) {
@@ -327,7 +327,7 @@ proto.winecellar.LoadWinecellarStockRequest.deserializeBinaryFromReader = functi
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setWinecellarid(value);
+      msg.setWineCellarId(value);
       break;
     default:
       reader.skipField();
@@ -358,7 +358,7 @@ proto.winecellar.LoadWinecellarStockRequest.prototype.serializeBinary = function
  */
 proto.winecellar.LoadWinecellarStockRequest.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getWinecellarid();
+  f = message.getWineCellarId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -369,10 +369,10 @@ proto.winecellar.LoadWinecellarStockRequest.serializeBinaryToWriter = function(m
 
 
 /**
- * optional string wineCellarId = 1;
+ * optional string wine_cellar_id = 1;
  * @return {string}
  */
-proto.winecellar.LoadWinecellarStockRequest.prototype.getWinecellarid = function() {
+proto.winecellar.LoadWinecellarStockRequest.prototype.getWineCellarId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -381,7 +381,7 @@ proto.winecellar.LoadWinecellarStockRequest.prototype.getWinecellarid = function
  * @param {string} value
  * @return {!proto.winecellar.LoadWinecellarStockRequest} returns this
  */
-proto.winecellar.LoadWinecellarStockRequest.prototype.setWinecellarid = function(value) {
+proto.winecellar.LoadWinecellarStockRequest.prototype.setWineCellarId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -615,7 +615,7 @@ proto.winecellar.WinecellarStock.prototype.toObject = function(opt_includeInstan
  */
 proto.winecellar.WinecellarStock.toObject = function(includeInstance, msg) {
   var f, obj = {
-    winecellarid: jspb.Message.getFieldWithDefault(msg, 1, ""),
+    wineCellarId: jspb.Message.getFieldWithDefault(msg, 1, ""),
     itemsList: jspb.Message.toObjectList(msg.getItemsList(),
     proto.winecellar.WinecellarStockItem.toObject, includeInstance)
   };
@@ -656,7 +656,7 @@ proto.winecellar.WinecellarStock.deserializeBinaryFromReader = function(msg, rea
     switch (field) {
     case 1:
       var value = /** @type {string} */ (reader.readString());
-      msg.setWinecellarid(value);
+      msg.setWineCellarId(value);
       break;
     case 2:
       var value = new proto.winecellar.WinecellarStockItem;
@@ -692,7 +692,7 @@ proto.winecellar.WinecellarStock.prototype.serializeBinary = function() {
  */
 proto.winecellar.WinecellarStock.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getWinecellarid();
+  f = message.getWineCellarId();
   if (f.length > 0) {
     writer.writeString(
       1,
@@ -711,10 +711,10 @@ proto.winecellar.WinecellarStock.serializeBinaryToWriter = function(message, wri
 
 
 /**
- * optional string wineCellarId = 1;
+ * optional string wine_cellar_id = 1;
  * @return {string}
  */
-proto.winecellar.WinecellarStock.prototype.getWinecellarid = function() {
+proto.winecellar.WinecellarStock.prototype.getWineCellarId = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 1, ""));
 };
 
@@ -723,7 +723,7 @@ proto.winecellar.WinecellarStock.prototype.getWinecellarid = function() {
  * @param {string} value
  * @return {!proto.winecellar.WinecellarStock} returns this
  */
-proto.winecellar.WinecellarStock.prototype.setWinecellarid = function(value) {
+proto.winecellar.WinecellarStock.prototype.setWineCellarId = function(value) {
   return jspb.Message.setProto3StringField(this, 1, value);
 };
 
@@ -798,7 +798,7 @@ proto.winecellar.WinecellarStockItem.prototype.toObject = function(opt_includeIn
  */
 proto.winecellar.WinecellarStockItem.toObject = function(includeInstance, msg) {
   var f, obj = {
-    wineryref: (f = msg.getWineryref()) && proto.winecellar.WineryRef.toObject(includeInstance, f),
+    wineryRef: (f = msg.getWineryRef()) && proto.winecellar.WineryRef.toObject(includeInstance, f),
     quantity: jspb.Message.getFieldWithDefault(msg, 2, 0)
   };
 
@@ -839,7 +839,7 @@ proto.winecellar.WinecellarStockItem.deserializeBinaryFromReader = function(msg,
     case 1:
       var value = new proto.winecellar.WineryRef;
       reader.readMessage(value,proto.winecellar.WineryRef.deserializeBinaryFromReader);
-      msg.setWineryref(value);
+      msg.setWineryRef(value);
       break;
     case 2:
       var value = /** @type {number} */ (reader.readInt32());
@@ -874,7 +874,7 @@ proto.winecellar.WinecellarStockItem.prototype.serializeBinary = function() {
  */
 proto.winecellar.WinecellarStockItem.serializeBinaryToWriter = function(message, writer) {
   var f = undefined;
-  f = message.getWineryref();
+  f = message.getWineryRef();
   if (f != null) {
     writer.writeMessage(
       1,
@@ -893,10 +893,10 @@ proto.winecellar.WinecellarStockItem.serializeBinaryToWriter = function(message,
 
 
 /**
- * optional WineryRef wineryRef = 1;
+ * optional WineryRef winery_ref = 1;
  * @return {?proto.winecellar.WineryRef}
  */
-proto.winecellar.WinecellarStockItem.prototype.getWineryref = function() {
+proto.winecellar.WinecellarStockItem.prototype.getWineryRef = function() {
   return /** @type{?proto.winecellar.WineryRef} */ (
     jspb.Message.getWrapperField(this, proto.winecellar.WineryRef, 1));
 };
@@ -906,7 +906,7 @@ proto.winecellar.WinecellarStockItem.prototype.getWineryref = function() {
  * @param {?proto.winecellar.WineryRef|undefined} value
  * @return {!proto.winecellar.WinecellarStockItem} returns this
 */
-proto.winecellar.WinecellarStockItem.prototype.setWineryref = function(value) {
+proto.winecellar.WinecellarStockItem.prototype.setWineryRef = function(value) {
   return jspb.Message.setWrapperField(this, 1, value);
 };
 
@@ -915,8 +915,8 @@ proto.winecellar.WinecellarStockItem.prototype.setWineryref = function(value) {
  * Clears the message field making it undefined.
  * @return {!proto.winecellar.WinecellarStockItem} returns this
  */
-proto.winecellar.WinecellarStockItem.prototype.clearWineryref = function() {
-  return this.setWineryref(undefined);
+proto.winecellar.WinecellarStockItem.prototype.clearWineryRef = function() {
+  return this.setWineryRef(undefined);
 };
 
 
@@ -924,7 +924,7 @@ proto.winecellar.WinecellarStockItem.prototype.clearWineryref = function() {
  * Returns whether this field is set.
  * @return {boolean}
  */
-proto.winecellar.WinecellarStockItem.prototype.hasWineryref = function() {
+proto.winecellar.WinecellarStockItem.prototype.hasWineryRef = function() {
   return jspb.Message.getField(this, 1) != null;
 };
 

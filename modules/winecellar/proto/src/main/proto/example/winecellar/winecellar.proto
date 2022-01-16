@@ -18,7 +18,7 @@ service WinecellarService {
   }
   rpc LoadStock (LoadWinecellarStockRequest) returns (WinecellarStock) {
     option (google.api.http) = {
-      get: "/winecellars/{wineCellarId}/stock"
+      get: "/winecellars/{wine_cellar_id}/stock"
     };
   }
 }
@@ -27,7 +27,7 @@ message ListAllWinecellarRequest {
 }
 
 message LoadWinecellarStockRequest {
-  string wineCellarId = 1;
+  string wine_cellar_id = 1;
 }
 
 message Winecellar {
@@ -37,12 +37,12 @@ message Winecellar {
 }
 
 message WinecellarStock {
-  string wineCellarId = 1;
+  string wine_cellar_id = 1;
   repeated WinecellarStockItem items = 2;
 }
 
 message WinecellarStockItem {
-    WineryRef wineryRef = 1;
+    WineryRef winery_ref = 1;
     int32 quantity = 2;
 }
 
