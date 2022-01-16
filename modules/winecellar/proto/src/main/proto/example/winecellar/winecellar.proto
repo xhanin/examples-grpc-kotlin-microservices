@@ -1,3 +1,6 @@
+/*
+This module allows to deal with the main objects managed in this application: winecellars.
+ */
 syntax = "proto3";
 
 import "google/api/annotations.proto";

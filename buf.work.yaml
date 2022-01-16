@@ -1,0 +1,4 @@
+version: v1
+directories:
+  - modules/winery/proto/src/main/proto
+  - modules/winecellar/proto/src/main/proto

@@ -1,0 +1,5 @@
+version: v1
+plugins:
+  - remote: buf.build/sawadashota/plugins/protoc-gen-doc
+    out: build/doc
+    opt: markdown,my-winecellar-app.md
