@@ -26,6 +26,8 @@ A *winery* is is a building or property that produces wine, or a business
 involved in the production of [wine](https://en.wikipedia.org/wiki/Wine),
 such as a wine company.
 
+![winery image](https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg/440px-NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg)
+
 This service currently proposes to list all available wineries in the
 application, and to get one winery by id.
  */
