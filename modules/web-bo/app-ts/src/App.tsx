@@ -83,7 +83,7 @@ function App() {
                   <p className="title">Image of the week</p>
                   <p className="subtitle">Nappa Valley wine cellar</p>
                   <figure className="image is-4by3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg/440px-NorCal2018_-020_Sterling_Vineyards_-_Wine_Barrels_-_Napa_Valley_-S0240208.jpg" />
                   </figure>
                 </article>
               </div>
